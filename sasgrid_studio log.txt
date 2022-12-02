@@ -1,0 +1,72 @@
+ 
+ 1          OPTIONS NONOTES NOSTIMER NOSOURCE NOSYNTAXCHECK;
+ NOTE: Querying grid metadata produced: NOTE: The metadata user does not have grid credentials for authdomain 'DefaultAuth'.
+ NOTE: Querying grid metadata produced: NOTE: Grid credentials retrieved from authinfo file for user 'cytel.com\sassrv'.
+ 72         
+ 73         %let rc=%sysfunc(grdsvc_enable(gridsess,server=SASApp));
+ 74         options autosignon;
+ 75         rsubmit gridsess wait=no;
+ NOTE: Remote session ID GRIDSESS will use its enabled grid service.
+ NOTE: Remote signon to GRIDSESS commencing (SAS Release 9.04.01M7P080520).
+ NOTE: SIGNON request submitted to grid as job ID '11'.
+ NOTE: SIGNON request completed to grid host 'cyt-sas-gc1'.
+ NOTE: SASPROPRIETARY encryption is being used to protect network traffic.
+ NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+ NOTE: All profile changes will be lost at the end of the session.
+ NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+ NOTE: SAS (r) Proprietary Software 9.4 (TS1M7) 
+       Licensed to CYTEL STATISTICAL SOFTWARE & SERVICES PVT CONTROL, Site 70257944.
+ NOTE: This session is executing on the X64_DSRV16  platform.
+ 
+ 
+ 
+ NOTE: Analytical products:
+       
+       SAS/STAT 15.2
+ 
+ NOTE: Additional host information:
+ 
+  X64_DSRV16 WIN 10.0.14393  Server
+ 
+ NOTE: SAS initialization used:
+       real time           0.23 seconds
+       cpu time            0.23 seconds
+       
+ NOTE: Libref SASDATA successfully assigned from logical server.
+ NOTE: Libref STPSAMP successfully assigned from logical server.
+ 
+ NOTE: AUTOEXEC processing beginning; file is F:\SASConf\Config\Lev1\SASApp\appserver_autoexec.sas.
+ 
+ 
+ NOTE: AUTOEXEC processing completed.
+ 
+ NOTE: Remote signon to GRIDSESS complete.
+ NOTE: Background remote submit to GRIDSESS in progress.
+ 76         waitfor gridsess;
+ 77         signoff gridsess;
+ NOTE: Remote submit to GRIDSESS commencing.
+ 1    proc export
+ 2      data=sashelp.prdsale
+ 3      dbms=xlsx
+ 4      outfile="\\CYT-SMB--032d.cytel.com\SASData\prdsale12.xlsx"
+ 5      replace;
+ 6    run;
+  
+ NOTE: The export data set has 1440 observations and 10 variables.
+ NOTE: "\\CYT-SMB--032d.cytel.com\SASData\prdsale12.xlsx" file was successfully created.
+ NOTE: PROCEDURE EXPORT used (Total process time):
+       real time           0.11 seconds
+       cpu time            0.06 seconds
+  
+  
+ NOTE: Remote submit to GRIDSESS complete.
+ NOTE: Remote signoff from GRIDSESS commencing.
+ NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+ NOTE: The SAS System used:
+       real time           0.43 seconds
+       cpu time            0.37 seconds
+       
+ NOTE: Remote signoff from GRIDSESS complete.
+ 78         
+ 79         OPTIONS NONOTES NOSTIMER NOSOURCE NOSYNTAXCHECK;
+ 91         
